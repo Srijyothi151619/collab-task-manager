@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an axios instance
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', // CHECK: Make sure this matches your Backend port!
+  baseURL: 'https://collab-task-manager-qcow.onrender.com/api', // CHECK: Make sure this matches your Backend port!
   withCredentials: true, // Important for cookies
 });
 

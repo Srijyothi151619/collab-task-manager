@@ -22,7 +22,7 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/tasks');
+      const response = await fetch('https://collab-task-manager-qcow.onrender.com/api/tasks');
       const data = await response.json();
       setTasks(data);
     } catch (error) {
@@ -36,7 +36,7 @@ function App() {
     if (!newTask.title) return alert('Title is required!');
 
     try {
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      const response = await fetch('https://collab-task-manager-qcow.onrender.com/api/tasks', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newTask),
