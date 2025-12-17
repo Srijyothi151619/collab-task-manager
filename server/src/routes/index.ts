@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import { AuthController } from '../controllers/auth.controller';
-import { TaskController } from '../controllers/task.controller';
-import { authenticateToken } from '../middlewares/auth.middleware';
+// I changed these to start with Capital Letters to match likely file names
+import { AuthController } from '../controllers/AuthController';
+import { TaskController } from '../controllers/TaskController';
+import { authenticateToken } from '../middlewares/AuthMiddleware';
 
 const router = Router();
 
@@ -10,6 +11,8 @@ router.post('/auth/register', AuthController.register);
 router.post('/auth/login', AuthController.login);
 router.post('/auth/logout', AuthController.logout);
 router.get('/auth/me', authenticateToken, AuthController.getMe);
+
+// Keep your inline users function exactly as it was
 router.get('/users', authenticateToken, async (req, res) => {
     // Quick endpoint to get users for the dropdown
     const prisma = require('../config/db').default;
