@@ -8,20 +8,27 @@ import cookieParser from 'cookie-parser';
 const app = express();
 const httpServer = createServer(app);
 
-// Configure CORS for frontend connection
+// define allowed origins (Localhost AND Vercel)
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://collab-task-manager-seven.vercel.app"
+];
+
+// Configure Socket.io CORS
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173", // Your frontend URL
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PATCH", "DELETE"]
   }
 });
 
-// Middleware
+// Configure Express CORS
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: allowedOrigins,
   credentials: true
 }));
+
 app.use(express.json());
 app.use(cookieParser());
 
